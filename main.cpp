@@ -16,14 +16,23 @@ int main(void)
     list.push_back(2);
     list.push_back(3);
 
+    std::set<int> sety;
+    sety.insert(1);
+    sety.insert(2);
+    sety.insert(3);
+
     try
     {
+        std::cout << "Vector as container :" << std::endl;
         easyfind(vec, 1);
+        std::cout << "List as container :" << std::endl;
+        easyfind(list, 2);
+        std::cout << "Set as container :" << std::endl;
+        easyfind(sety, 3);
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
-    return(0
-    );
+    return(0);
 }
