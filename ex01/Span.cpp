@@ -1,7 +1,7 @@
 #include "Span.hpp"
 #include <climits>
 
-Span::Span(): _N(), _vec(2){}
+Span::Span(): _N(0), _vec(){}
 
 Span::Span(unsigned int N):_N(N), _vec() {}
 
@@ -42,9 +42,7 @@ int Span::shortestSpan()
         {
             sit = it + 1;
             if (*sit - *it < distance)
-            {
                 distance = *sit - *it;
-            }
         }
         return distance;
     }
@@ -57,11 +55,26 @@ int Span::longestSpan()
     if (_vec.size() >= 2)
     {
         std::sort(_vec.begin(), _vec.end());
-        std::vector<int>::iterator sit;
         return *(_vec.end() -1) - *(_vec.begin());
     }
     else
         throw SpanIsEmpty();
+}
+
+void Span::addMultipleNumbers(unsigned int n)
+{
+    for (unsigned int i = 0; i < n; i++)
+    {
+        if (n < _N)
+        {
+            addNumber(rand());
+            // std::cout << " " << _vec[i];
+        }
+        else
+        {
+            throw SpanIsFull();
+        }
+    }
 }
 
 const char *Span::SpanIsFull::what() const throw()
